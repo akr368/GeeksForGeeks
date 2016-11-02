@@ -1,3 +1,3 @@
 # GeeksForGeeks
-DS&amp;Algo
-DataStructures&Algo
+
+DATASTRUCTURE and ALGORITHMS
