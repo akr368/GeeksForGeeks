@@ -12,7 +12,7 @@ void findPairs(int a[],int n,int sum){
    	 	if(a[i]+a[j]==sum){
    	 		
    	 		cout<<"Pairs:"<<a[i]<<"+"<<a[j]<<"="<<sum<<endl;
-   	 		break;
+   	 		return;
    	 	}
 
    	 }
