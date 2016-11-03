@@ -10,9 +10,10 @@ void findPair(int a[],int n,int sum){
 
    bool hashmap[MAX]={0};
    int i=0;
+   int temp;
    for(i=0;i<n;i++){
-   
-   	 if(hashmap[sum-a[i]]==1){
+      temp=sum-a[i];
+   	 if(temp>=0 && hashmap[temp]]==1){
    	 	cout<<"Pair:"<<sum-a[i]<<"+"<<a[i]<<endl;
    	 	return;
    	 }
