@@ -1,6 +1,7 @@
 # GeeksForGeeks
 
-This repo contains solutions for all the problems in
+This repo contains (will contain!) solutions for problems in
 GeeksforGeeks.com.
 
-The code is written in C++.1992
+The code is written in C++.
+

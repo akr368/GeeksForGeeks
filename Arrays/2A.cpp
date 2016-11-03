@@ -2,7 +2,7 @@
 using namespace std;
 
 
-void findMajority(int a[],int n){
+void findMajority(int a[],int n) {
  
   int i,j;
   i=j=0;
@@ -10,8 +10,7 @@ void findMajority(int a[],int n){
   
   for(i=0;i<n;i++){
   	for(j=0;j<n;j++){
-
-  		if(a[j]==a[i]){
+ 		if(a[j]==a[i]){
   			count++;
   			if(count>n/2){
   		       cout<<"Element:"<<a[j]<<endl;
@@ -19,10 +18,8 @@ void findMajority(int a[],int n){
   	      }
   		}
   	  }
-  	count=0;
-
+   	count=0;
   	}
-  	
 }
 
 int main() {
