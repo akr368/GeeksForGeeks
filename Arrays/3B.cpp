@@ -17,7 +17,6 @@ void findOdd(int a[],int n){
     	}
     }
  
-
 }
 
 
