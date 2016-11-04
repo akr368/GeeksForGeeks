@@ -8,6 +8,8 @@ Algo-
 
 */
 
+void isMajority(int a[],int x,int n);
+
 void findFrequentElement(int a[],int n){
  
  int count=0;
@@ -25,11 +27,13 @@ void findFrequentElement(int a[],int n){
 
  }
 
-B(a,max,n);
+cout<<max;
+
+//isMajority(a,max,n);
 
 }
 
-void B(int a[],int x,int n){
+void isMajority(int a[],int x,int n){
   
   int i;
   int count=0;
@@ -51,7 +55,7 @@ void B(int a[],int x,int n){
 int main() {
    
 
-   int a[]={2,2,3,3,3,4,3};
+   int a[]={3,3,4,2,2,2};
    int n=sizeof(a)/sizeof(a[0]);
    findFrequentElement(a,n);
    
