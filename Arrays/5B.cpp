@@ -1,25 +1,27 @@
 #include <iostream>
 using namespace std;
 
-//This might cause integer overflow if n is very large.
-
 int findMissing(int a[],int n){
-
-   int sum=((n+1)*(n+2))/2;
-   int total=0;
+   
+   int ans=0;
    int i;
-   for(i=0;i<n;i++){
-   	total+=a[i];
+   for(i=1;i<=n+1;i++){
+   	ans^=i;
    }
-   return sum-total;
+   for(i=0;i<n;i++){
+   	ans^=a[i];
+   }
  
+  return ans;
+
 }
 
 int main(){
 
+
    int a[]={1, 2, 4,6, 3, 7, 8};
    int n=sizeof(a)/sizeof(a[0]);
-   cout<<findMissing(a,n)<<endl;
-   return 0;
-   
+   cout<<findMissing(a,n);
+
+	return 0;
 }
