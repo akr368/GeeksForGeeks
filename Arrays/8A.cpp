@@ -19,11 +19,11 @@ int findMedian(int a[],int b[],int n){
        if((i<n && a[i]<=b[j])|| (j==n)){
        	m1=a[i];
        	i++;
-       	//cout<<"m1:"<<m1<<endl;
+       	cout<<"m1:"<<m1<<endl;
        }else{
        	m2=b[j];
        	j++;
-       //	cout<<"m2:"<<m2<<endl;
+       	cout<<"m2:"<<m2<<endl;
        }
   
 
@@ -39,8 +39,8 @@ int findMedian(int a[],int b[],int n){
 
 int main(){
 
-  int a[]={1,2,3,4,5};
-  int b[]={6,7,8,9,10};
+  int a[]={2,5,7,9,10,12};
+  int b[]={1,3,6,9,11,13};
   
   int n=sizeof(b)/sizeof(b[0]);
   cout<<findMedian(a,b,n)<<endl;
