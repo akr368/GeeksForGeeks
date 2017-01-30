@@ -2,37 +2,39 @@
 
 using namespace std;
 
-int binarysearch(int a[],int k,int l,int h){
-   
-    if(l<=h){
-     
-    int mid=l-(l-h)/2; 
+int binarysearch(int a[],int n,int k){
 
-    if(a[mid]==k){
-        cout<<"Element found"<<endl;
-        return 1;
+    int l=0;
+    int h=n-1;
+
+    while(l<=h){
+      
+        int mid=l-(l-h)/2;
+        if(a[mid]==k){
+            cout<<"Element found."<<endl;
+            return 1;
+        }
+
+        if(k>a[mid])
+           l=mid+1;
+        else
+           h=mid-1;    
+
     }
 
-    if(k>a[mid])
-        return binarysearch(a,k,mid+1,h);
-    else
-        return binarysearch(a,k,0,mid-1);
-  
-   }
+    cout<<"Element NOT found";
 
-   return 0;
-
-
+    return 0;
+   
 }
 
 
 int main(){
 
     int a[]={1,2,3,10,20,30,50};
-    int k=-2;
+    int k=502;
     int n=sizeof(a)/sizeof(a[0]);
-    if(!binarysearch(a,k,0,n-1))
-        cout<<"Element NOT found"<<endl;
+    binarysearch(a,n,k);
 
     return 0;
 
