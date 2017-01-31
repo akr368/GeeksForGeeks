@@ -8,7 +8,6 @@ void swap(int *x,int *y){
   temp=*x;
   *x=*y;
   *y=temp;
-
 }
 
 int main(){
@@ -16,14 +15,23 @@ int main(){
     int a[]={123,2,10,3002,11,0,30};
     int n=sizeof(a)/sizeof(a[0]);
     int i,j;
+    bool swapped;
 
     for(i=0;i<n-1;i++){
       
+      swapped=false;
+
        for(j=0;j<n-i-1;j++){
 
-          if(a[j]>a[j+1])
+          if(a[j]>a[j+1]){
              swap(&a[j],&a[j+1]);
+             swapped=true;
+          }
 
+      }
+
+      if(swapped==false){
+        break;
       }
     }
 
