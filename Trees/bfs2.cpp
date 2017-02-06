@@ -17,16 +17,25 @@ void bfs(Node *root){
   queue<Node*> q;
 
   q.push(root);
+  int no_nodes=0;
 
   while(!q.empty()){
      
+     no_nodes=q.size();
+     while(no_nodes--){
+     
      Node *node=q.front();
-     cout<<node->data;
+     cout<<node->data<<" ";
+
+
      if(node->left!=NULL)
       q.push(node->left);
      if(node->right!=NULL)
       q.push(node->right);
      q.pop();
+
+      }
+      cout<<endl;
 
   }
 }

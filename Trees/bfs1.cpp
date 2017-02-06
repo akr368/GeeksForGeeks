@@ -35,6 +35,7 @@ void goToLevel(struct node *node){
   int i;
   for(i=1;i<=h;i++){
       printNodesInLevel(node,i);
+      cout<<endl;
   }
 }
 

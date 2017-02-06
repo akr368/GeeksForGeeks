@@ -2,20 +2,13 @@
 
 using namespace std;
 
-struct node {
+struct node{
   int data;
   struct node *left;
   struct node *right;
 };
 
-int max(int a,int b) {
-  if(a>b)
-    return a;
-  else 
-    return b;
-}
-
-struct node* newnode(int data){
+struct node* newnode(int data) {
     struct node* node=(struct node*)malloc(sizeof(struct node));
     node->data=data;
     node->left=NULL;
@@ -23,27 +16,28 @@ struct node* newnode(int data){
     return node;
 }
 
+int countLeaf(struct node *temp){
 
-int size(struct node *node){
-  if(node==NULL)
+   if(temp==NULL)
     return 0;
-  return 1 + size(node->left)+ size(node->right);
+
+   if(temp->left==NULL && temp->right==NULL)
+    return 1;
+
+   return countLeaf(temp->left)+countLeaf(temp->right);
+
 }
 
-int main() { 
+
+int main() {
 
     struct node* root=newnode(1);
     root->left=newnode(2);
     root->right=newnode(3);
     root->left->left=newnode(4);
-    root->left->left->left=newnode(10);
-    root->left->left->left->left=newnode(12);
     root->left->right=newnode(5);
-    
-    cout<<size(root)<<endl;
+    cout<<countLeaf(root)<<endl;
    
-
-
     return 0;
 
 }

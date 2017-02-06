@@ -16,6 +16,7 @@ int max(int a,int b) {
 }
 
 struct node* newnode(int data){
+
     struct node* node=(struct node*)malloc(sizeof(struct node));
     node->data=data;
     node->left=NULL;
@@ -25,10 +26,14 @@ struct node* newnode(int data){
 
 
 int size(struct node *node){
-  if(node==NULL)
+   
+   if(node==NULL)
     return 0;
-  return 1 + size(node->left)+ size(node->right);
+
+   return 1+max(size(node->left),size(node->right));
+
 }
+
 
 int main() { 
 
@@ -37,12 +42,10 @@ int main() {
     root->right=newnode(3);
     root->left->left=newnode(4);
     root->left->left->left=newnode(10);
+
     root->left->left->left->left=newnode(12);
     root->left->right=newnode(5);
-    
     cout<<size(root)<<endl;
-   
-
 
     return 0;
 
