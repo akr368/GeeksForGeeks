@@ -1,37 +1,37 @@
+
 #include <iostream>
 #include <queue>
 
 using namespace std;
 
-struct Node {
+struct node {
   int data;
-  struct Node *left;
-  struct Node *right;
+  struct node *left;
+  struct node *right;
 };
 
-void bfs(Node *root){
+void bfs(struct node *root){
 
-  if(root==NULL)
-   return;
 
-  queue<Node*> q;
+  queue<struct node*> q;
 
   q.push(root);
-  int no_nodes=0;
+  int no_nodes;
+  struct node *temp;
 
   while(!q.empty()){
      
      no_nodes=q.size();
+
      while(no_nodes--){
      
-     Node *node=q.front();
-     cout<<node->data<<" ";
+     temp=q.front();
+     cout<<temp->data<<" ";
 
-
-     if(node->left!=NULL)
-      q.push(node->left);
-     if(node->right!=NULL)
-      q.push(node->right);
+     if(temp->left!=NULL)
+      q.push(temp->left);
+     if(temp->right!=NULL)
+      q.push(temp->right);
      q.pop();
 
       }
@@ -40,9 +40,9 @@ void bfs(Node *root){
   }
 }
 
-struct Node* newnode(int data){
+struct node* newnode(int data){
 
-    struct Node* node=(struct Node*)malloc(sizeof(struct Node));
+    struct node* node=(struct node*)malloc(sizeof(struct node));
     node->data=data;
     node->left=NULL;
     node->right=NULL;
@@ -51,7 +51,7 @@ struct Node* newnode(int data){
 
 int main() { 
 
-    struct Node* root=newnode(1);
+    struct node* root=newnode(1);
     root->left=newnode(2);
     root->right=newnode(3);
     root->left->left=newnode(4);
