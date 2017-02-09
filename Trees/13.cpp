@@ -9,6 +9,8 @@ struct node{
   bool rightThread;
 };
 
+void morris(struct node *node);
+
 struct node* newnode(int data) {
     struct node* node=(struct node*)malloc(sizeof(struct node));
     node->data=data;
@@ -17,34 +19,46 @@ struct node* newnode(int data) {
     return node;
 }
 
+void morris(struct node *node){
+   
+   if(node==NULL)
+    return;
 
-struct node* leftMost(struct node *node){
+   struct node *curr,*pre;
+   curr=node;
 
-  if(node==NULL)
-    return NULL;
+   while(curr!=NULL){
+      
+       if(curr->left==NULL){
+        cout<<curr->data<<" ";
+        curr=curr->right;
+       }
 
-   while(node->left!=NULL)
-    node=node->left;
+       else {
 
-  return node;
+        pre=curr->left;
+        while(pre->right!=NULL && pre->right!=curr){
+          pre=pre->right;
+        }
 
-}
+        if(pre->right==NULL){
+          pre->right=curr;
+          curr=curr->left;
+        }
+
+        else{
+          
+          pre->right=NULL;
+          cout<<curr->data<<" ";
+          curr=curr->right;
+
+        }
 
 
-void inorder(struct node *node){
 
-    struct node *cur=leftMost(node);
 
-    while(cur!=NULL){
-
-        cout<<cur->data<<" ";
-        if(cur->rightThread)
-          cur=cur->right;
-        else
-          cur=leftMost(cur->right);
-
-    }
-
+       }
+   }
 }
 
 
@@ -53,17 +67,11 @@ int main() {
     struct node* root=newnode(2);
     root->left=newnode(1);
     root->right=newnode(3);
-    root->left->left=newnode(0);
-    root->left->right=root;
-    root->left->rightThread=true;
-    root->left->left->right=root->left;
+    root->left->left=newnode(5);
+    root->left->right=newnode(6);
     
-    root->left->left->rightThread=true;
-    inorder(root);
+    morris(root);
 
-
-   
-   
     return 0;
 
 }
