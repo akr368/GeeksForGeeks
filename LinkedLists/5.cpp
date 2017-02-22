@@ -66,9 +66,9 @@ void delete_position(struct node **head_ref,int position){
 int main(){
 
 	struct node *head=NULL;
-   // push(&head,1);
-    //push(&head,2);
-   // push(&head,3);
+    push(&head,1);
+    push(&head,2);
+    push(&head,3);
     traverse(head);
     delete_position(&head,10);
     traverse(head);
