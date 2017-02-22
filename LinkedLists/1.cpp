@@ -7,13 +7,22 @@ struct node{
     struct node *next;
 };
 
+void traverse(struct node *node){
+
+	while(node!=NULL){
+		cout<<node->data<<" ";
+		node=node->next;
+	}
+
+
+}
 
 
 int main(){
 
 	struct node *head=NULL;
-	struct node *first=NULL;
-	struct ndoe *second=NULL;
+	struct node *second=NULL;
+	struct node *third=NULL;
 
 	head=(struct node*)malloc(sizeof(struct node));
 	second=(struct node*)malloc(sizeof(struct node));
@@ -25,6 +34,8 @@ int main(){
 	second->next=third;
 	third->data=3;
 	third->next=NULL;
+	traverse(head);
+
 
     
 
