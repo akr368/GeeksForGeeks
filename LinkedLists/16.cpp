@@ -21,32 +21,56 @@ void push(struct node **head_ref,int data_item){
    newnode->data=data_item;
    newnode->next=*head_ref;
    *head_ref=newnode;
-
 }
 
-int count(struct node *node,int key){
 
-   int count=0;
-   while(node!=NULL){
-      if(node->data==key)
-         count++;
-      node=node->next;
+void reverse(struct node **head_ref){
+
+
+   struct node *prev=NULL;
+   struct node *curr=*head_ref;
+   struct node *next;
+
+   while(curr!=NULL){
+       next=curr->next;
+       curr->next=prev;
+       prev=curr;
+       curr=next;
    }
-   return count;
+   *head_ref=prev;
+
+}
+
+//Recursive Call
+
+void reverse1(struct node *curr,struct node *prev,struct node **head){
+   
+
+  if(curr->next==NULL){
+      curr->next=prev;
+      *head=curr;
+      return;
+  }
+
+  struct node *temp=curr->next;
+  curr->next=prev;
+  reverse1(temp,curr,head); 
+
 }
 
 
-
-
-int main(){
+int main() {
 
   struct node *head=NULL;
   push(&head,1);
-  push(&head,1);
+  push(&head,2);
   push(&head,3);
-  push(&head,1);
+  push(&head,4);
   push(&head,5);
-  
-  cout<<"Count: "<<count(head,1)<<endl;
+  traverse(head);
+  reverse1(head,NULL,&head);
+  traverse(head);
+
   return 0;
+
 }
