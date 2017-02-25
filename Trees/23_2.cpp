@@ -1,7 +1,8 @@
 #include <iostream>
-#include <queue>
+#include <stack>
 
 using namespace std;
+
 
 struct node{
   int data;
@@ -18,33 +19,43 @@ struct node* newnode(int data) {
     return node;
 }
 
-void levelOrder(struct node *node){
-  
-  queue<struct node *> q;
-  struct node *temp;
-  
-  if(node!=NULL)
-    q.push(node);
-  
-  while(!q.empty()){
+void levelOrder(struct node *root){
 
-    int n_nodes=q.size();
+   if(root==NULL)
+    return;
 
-   while(n_nodes--){
-    temp=q.front();
-    cout<<temp->data<<" ";
-    if(temp->left!=NULL)
-      q.push(temp->left);
-    if(temp->right!=NULL)
-      q.push(temp->right);
-    q.pop();
+   stack <struct node*> s1;
+   stack <struct node*> s2;
 
+   s1.push(root);
+   
+   while(!s1.empty() || !s2.empty()){
+
+       while(!s1.empty()){
+
+           struct node *temp=s1.top();
+           cout<<temp->data<<" ";
+           s1.pop();
+           if(temp->right)
+            s2.push(temp->right);
+           if(temp->left)
+            s2.push(temp->left);
+       }
+
+       while(!s2.empty()){
+          
+           struct node *temp=s2.top();
+          cout<<temp->data<<" ";
+          s2.pop();
+          if(temp->left)
+            s1.push(temp->left);
+          if(temp->right)
+            s1.push(temp->right);
+
+       }
    }
-
-   cout<<endl;
-
-  }
 }
+
 
 int main() {
 
