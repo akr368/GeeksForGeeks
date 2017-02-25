@@ -48,6 +48,24 @@ void delete_alternate(struct node *head){
 
 }
 
+//Recursive
+
+
+void delete_alternate_recur(struct node *head){
+   
+   if(head==NULL)
+    return;
+   struct node *next_node=head->next;
+   
+   if(next_node==NULL)
+    return;
+  
+   head->next=next_node->next;
+   free(next_node);
+   delete_alternate_recur(head->next);
+
+}
+
 
 
 
@@ -60,8 +78,10 @@ int main() {
   push(&head,3);
   push(&head,2);
   push(&head,1);
+
   traverse(head);
-  delete_alternate(head);
+  
+  delete_alternate_recur(head);
   traverse(head);
 
   return 0;
