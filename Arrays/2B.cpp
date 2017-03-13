@@ -18,6 +18,7 @@ void findFrequentElement(int a[],int n){
  for(i=0;i<n;i++){
  	if(count==0){
  		max=a[i];
+    count=1;
  	}
     if(max==a[i]){
     	count++;
@@ -55,7 +56,7 @@ void isMajority(int a[],int x,int n){
 int main() {
    
 
-   int a[]={3,3,4,2,2,2};
+   int a[]={3,3,4,2,2,2,2,2};
    int n=sizeof(a)/sizeof(a[0]);
    findFrequentElement(a,n);
    
