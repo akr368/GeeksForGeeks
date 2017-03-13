@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-
+/*
 int searchPivotedArray(int a[],int l,int h,int key){
 
    if(l>h)
@@ -29,12 +29,44 @@ int searchPivotedArray(int a[],int l,int h,int key){
 
 }
 
+
+*/
+
+
+int searchPivotedArray(int a[],int l,int h,int key){
+     
+     if(l>h)
+      return -1;
+
+     int mid=l-(l-h)/2;
+
+     if(a[mid]==key)
+      return mid;
+
+    if(a[l]<=a[mid]){  
+       
+       if(a[l]<=key && key<=a[mid])
+        return searchPivotedArray(a,l,mid-1,key);
+      else
+        return searchPivotedArray(a,mid+1,h,key);
+
+    }
+
+   if(key>=a[mid] && key<=a[h])
+    return searchPivotedArray(a,mid+1,h,key);
+   
+   return searchPivotedArray(a,l,mid-1,key);
+
+
+}
+
+
 int main(){
 
-	 int a[]={6,7,0,1,2,3,4,5};
+	 int a[]={6,7,1,2,3,4,5};
 	 int n=sizeof(a)/sizeof(a[0]);
     
-     int ans=searchPivotedArray(a,0,n-1,5);
+     int ans=searchPivotedArray(a,0,n-1,1);
      if(ans!=-1){
      cout<< "Index:"<<ans<<endl;
      cout<<"Element:"<<a[ans]<<endl;
